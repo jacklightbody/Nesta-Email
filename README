@@ -1,0 +1,4 @@
+The required gems for this are 
+mail
+nesta
+To setup edit email_nesta.rb with your information. To use with nesta place email_nesta.rb in the root folder of your nest installation. All your emails will be output as markdown files.
