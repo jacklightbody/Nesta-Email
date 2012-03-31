@@ -6,6 +6,7 @@ EMAIL_PASSWORD='writrtest'
 EMAIL_MODE='simple'
 require 'mail'
 require 'time'
+require 'psych'
 Mail.defaults do
 	retriever_method EMAIL_TYPE, {
 		:address    => EMAIL_HOST,
@@ -18,11 +19,20 @@ end
 # set up the mail gem... much simpler than php
 emails=Mail.find(:what=>:unread)
 menu=""
+yaml=Psych.load(File.open("config/config.yml"))
+content=yaml['content']
+# get what they're using for content
 emails.each do |email|
 	title=email.subject
 	title.sub(' ','-')
 	# remove all spaces from the title
-	newpost=File.new('content/pages/'+title+".mdown","w")
+	i=0
+	while(File.exists?(content+'/pages/'+title+".mdown"))
+		title=title+"-"+i
+		i=i+1
+		# check if this file still exists 
+	end
+	newpost=File.new(content+'/pages/'+title+".mdown","w")
 	menu+=title+"\n"
 	if(EMAIL_MODE=='simple')
 		#they want us to format it
@@ -36,6 +46,11 @@ emails.each do |email|
 	end
 	newpost.puts(html)
 end
-menuf = File.open("content/menu.txt", "w+")
+if(File.exists?(content+"/menu.txt"))
+	menuf = File.open(content+"/menu.txt", "w+")
+else
+	menuf=File.new(content+'/menu.txt',"w")
+	#if the menu file isn't there then create it
+end
 menuf.puts(menu)
 # add the links to menu.txt
