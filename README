@@ -1,3 +1,4 @@
+What this plugin does is quite simple. You set up an email address and then email something you want to get posted to your nesta blog. The next time email_nesta is executed, your email will be posted to your blog.
 The required gems for this are 
 mail
 nesta
