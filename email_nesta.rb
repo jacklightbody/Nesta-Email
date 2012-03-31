@@ -1,26 +1,26 @@
-BlogFramework.parse;
-Class BlogFramework{
-	@@EMAIL_HOST='imap.gmail.com'
-	@@EMAIL_TYPE='imap'
-	@@EMAIL_PORT='995'
-	@@EMAIL_USERNAME='emailwritrtest@gmail.com'
-	@@EMAIL_PASSWORD='writrtest'
-	def parse
-		require 'config.rb'
+
+	EMAIL_HOST='pop.gmail.com'
+	EMAIL_TYPE=:pop3
+	EMAIL_PORT='995'
+	EMAIL_USERNAME='emailwritrtest@gmail.com'
+	EMAIL_PASSWORD='writrtest'
 		require 'mail'
 		Mail.defaults do
-  			retriever_method self.EMAIL_TYPE, :address    => self.EMAIL_HOST,
-                          :port       => self.EMAIL_PORT,
-                          :user_name  => self.EMAIL_USERNAME,
-                          :password   => self.EMAIL_PASSWORD,
-                          :enable_ssl => true
+  			retriever_method EMAIL_TYPE, {
+  			:address    => EMAIL_HOST,
+            :port       => EMAIL_PORT,
+            :user_name  => EMAIL_USERNAME,
+            :password   => EMAIL_PASSWORD,
+            :enable_ssl => true
+        	}
 		end
 		#set up the mail gem... much simpler than php
 		emails=Mail.find(:what=>:unread)
+		puts YAML::dump(emails)
 		menu="\n"
-		emails.each.do |email|
+		emails.each do |email|
 			title=email.subject
-			title[' ']='-'
+			title.sub(' ','-')
 			#remove all spaces from the title
 			newpost=File.new('content/pages/'+title+".mdown")
 			menu+=title+"/n"
@@ -28,8 +28,6 @@ Class BlogFramework{
 			#format the text so nesta likes it
 			newpost.puts(html)
 		end
-		menuf = File.open("menu.txt")
+		menuf = File.open("content/menu.txt", "w+")
 		menuf.puts(menu)
 		# add the links to menu.txt
-	end
-}
