@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Nesta-email by 12345j</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Nesta-email</h1>
+        <p>Post to nesta cms via email</p>
+        <p class="view"><a href="https://github.com/12345j/Nesta-Email">View the Project on GitHub <small>12345j/Nesta-Email</small></a></p>
+        <ul>
+          <li><a href="https://github.com/12345j/Nesta-Email/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/12345j/Nesta-Email/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/12345j/Nesta-Email">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>What this plugin does is quite simple. You set up an email address and then email something you want to get posted to your nesta blog. The next time email_nesta is executed, your email will be posted to your blog.
+The required gems for this are 
+* mail
+* nesta
+* psych
+Physc is included in ruby versions 1.9.2 and greater.
+To setup edit email_nesta.rb with your information. To use with nesta place email_nesta.rb in the root folder of your nest installation. All your emails will be output as markdown files. To execute, simply use 
+ruby mynestasite.com/email_nesta.rb
+you may want to set up some kind of cron job for this.</p>
+
+<p>Options:
+EMAIL_HOST</p>
+
+<p>the host of your email provider, without http:// and with .com or .org</p>
+
+<p>EMAIL_TYPE</p>
+
+<p>:pop3 or :smpt</p>
+
+<p>EMAIL_PORT</p>
+
+<p>The port you want the mail gem to use.</p>
+
+<p>EMAIL_USERNAME</p>
+
+<p>the username of your email account</p>
+
+<p>EMAIL_PASSWORD</p>
+
+<p>the password of your email account</p>
+
+<p>EMAIL_MODE</p>
+
+<p>two options, simple or advanced. Simple mode just email the body of your post, the app formats it for you. Advanced you email the post like you would write it normally in nesta.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/12345j">12345j</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
